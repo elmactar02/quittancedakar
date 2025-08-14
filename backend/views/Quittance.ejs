@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quittance de Loyer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 40px auto;
+      max-width: 800px;
+      background-color: #F9FAFB;
+      color: #1F2937;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      border-bottom: 4px solid #F97316;
+    }
+
+    .header h1 {
+      color: #EA580C;
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    .section {
+      background-color: #FFFFFF;
+      border: 1px solid #F3F4F6;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 18px;
+      color: #EA580C;
+      margin-bottom: 12px;
+      border-left: 4px solid #F97316;
+      padding-left: 8px;
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .info-table td {
+      padding: 6px 10px;
+      vertical-align: top;
+    }
+
+    .info-table td:first-child {
+      font-weight: 600;
+      color: #374151;
+      width: 200px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .signature {
+      margin-top: 40px;
+    }
+
+    .signature p {
+      margin: 0;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .footer {
+      font-size: 13px;
+      margin-top: 50px;
+      color: #6B7280;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #E5E7EB;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>QUITTANCE DE LOYER</h1>
+    <p>Mois concerné : <strong><%=period%></strong></p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Informations de l'agence</div>
+    <table class="info-table">
+      <tr><td>Nom de l'agence :</td><td><%= %></td></tr>
+      <tr><td>Adresse :</td><td><%= %></td></tr>
+      <tr><td>Téléphone :</td><td><%= %></td></tr>
+      <tr><td>Email :</td><td><%= %></td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Informations du locataire</div>
+    <table class="info-table">
+      <tr><td>Nom :</td><td><%=name_client%></td></tr>
+      <tr><td>Adresse du logement :</td><td><%=adresse%></td></tr>
+      <tr><td>Période du loyer :</td><td><%=period%></td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Détails du paiement</div>
+    <table class="info-table">
+      <tr><td>Montant payé :</td><td><strong style="color:#22C55E;"><%= amount %> €</strong></td></tr>
+      <tr><td>Date de paiement :</td><td><%=paymentDate%></td></tr>
+      <tr><td>Mode de paiement :</td><td><%= %></td></tr>
+      <tr><td>Référence :</td><td><%= %></td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <p>
+      Je soussigné(e) <strong><%= %></strong>, certifie avoir reçu de <strong><%=name_client%></strong> 
+      la somme de <strong><%=amount%> euros</strong> au titre du paiement du loyer et des charges pour le logement situé 
+      au <strong><%=adresse%></strong>, pour la période du <strong><%=period%></strong>.
+    </p>
+  </div>
+
+  <div class="signature">
+    <p class="right">Fait à <%= %>, le <%= %></p>
+    <p class="right"><%= %></p>
+    <br><br><br>
+    <p class="right"><strong>Signature et cachet</strong></p>
+  </div>
+
+  <div class="footer">
+    Ce document est à conserver par le locataire. Il peut être exigé pour certaines démarches administratives.
+  </div>
+
+</body>
+</html>
