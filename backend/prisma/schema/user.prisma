@@ -1,0 +1,21 @@
+model User {
+  id                      String                  @id @default(uuid())
+
+  // Basic Information
+  firstName               String                  @map("first_name")
+  lastName                String                  @map("last_name")
+  email                   String                  @unique
+  phone                   String                 
+  password                String                  
+  isActive                Boolean                 @default(true) @map("is_active")
+
+  // Internal Relations
+  locataire               Locataire?              @relation("UserLocataire")
+  agencyEmployee          AgencyEmployee?         @relation("UserAgencyEmployee")
+
+  // Date and time
+  createdAt               DateTime                @default(now()) @map("created_at")
+  updatedAt               DateTime                @updatedAt @map("updated_at")
+
+  @@map("users")
+}

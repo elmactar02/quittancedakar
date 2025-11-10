@@ -1,0 +1,25 @@
+model Quittance {
+  id                      String                  @id @default(uuid())
+
+  // Foreign Keys
+  tenantId                String                  @map("tenant_id")
+  agencyId                String                  @map("agency_id")
+
+  // Quittance Information
+  amount                  Decimal                 @db.Decimal(10, 2)
+  period                  String                  @db.VarChar(7) // Format: YYYY-MM
+  paymentDate             DateTime                @db.Date @map("payment_date")
+  paid                    Boolean                 @default(true)
+  adresse                 String                  @db.VarChar(200)
+  link                    String?                 @db.VarChar(500)
+
+  // Internal Relations
+  locataire               Locataire               @relation("QuittanceLocataire", fields: [tenantId], references: [id], onDelete: Cascade)
+  agence                  Agence                  @relation("QuittanceAgency", fields: [agencyId], references: [id], onDelete: Cascade)
+
+  // Date and time
+  createdAt               DateTime                @default(now()) @map("created_at")
+  updatedAt               DateTime                @updatedAt @map("updated_at")
+
+  @@map("quittances")
+}

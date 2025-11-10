@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
-import AgenceRouter from "./Router/AgenceRoute";
-import LocataireRouter from "./Router/LocataireRoute";
-import QuittanceRouter from "./Router/QuittanceRoute";
+import AgenceRouter from "./feature/agence/AgenceRoute";
+import LocataireRouter from "./feature/locataire/LocataireRoute";
+import QuittanceRouter from "./feature/quittance/QuittanceRoute";
 // Création de l'application Express
 const app = express();
 
@@ -19,7 +19,7 @@ app.use("/", AgenceRouter,LocataireRouter,QuittanceRouter);
 // Lancement du serveur sur un port
 const PORT = process.env.PORT || 2000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
 
 export default app;

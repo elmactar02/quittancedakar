@@ -1,0 +1,20 @@
+model Agence {
+  id                      String                  @id @default(uuid())
+
+  // Basic Information
+  name                    String                  @db.VarChar(100)
+  email                   String                  @unique @db.VarChar(100)
+  adresse                 String                  @db.VarChar(200)
+  role                    String                  @default("agency")
+
+  // Internal Relations
+  quittances              Quittance[]             @relation("QuittanceAgency")
+  locataires              Locataire[]             @relation("AgenceLocataire")
+  agencyEmployees         AgencyEmployee[]        @relation("AgencyEmployees")
+
+  // Date and time
+  createdAt               DateTime                @default(now()) @map("created_at")
+  updatedAt               DateTime                @updatedAt @map("updated_at")
+
+  @@map("agences")
+}
