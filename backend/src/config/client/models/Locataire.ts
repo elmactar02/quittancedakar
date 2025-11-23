@@ -27,6 +27,7 @@ export type AggregateLocataire = {
 export type LocataireMinAggregateOutputType = {
   id: string | null
   userId: string | null
+  agenceId: string | null
   name: string | null
   email: string | null
   adresse: string | null
@@ -38,6 +39,7 @@ export type LocataireMinAggregateOutputType = {
 export type LocataireMaxAggregateOutputType = {
   id: string | null
   userId: string | null
+  agenceId: string | null
   name: string | null
   email: string | null
   adresse: string | null
@@ -49,6 +51,7 @@ export type LocataireMaxAggregateOutputType = {
 export type LocataireCountAggregateOutputType = {
   id: number
   userId: number
+  agenceId: number
   name: number
   email: number
   adresse: number
@@ -62,6 +65,7 @@ export type LocataireCountAggregateOutputType = {
 export type LocataireMinAggregateInputType = {
   id?: true
   userId?: true
+  agenceId?: true
   name?: true
   email?: true
   adresse?: true
@@ -73,6 +77,7 @@ export type LocataireMinAggregateInputType = {
 export type LocataireMaxAggregateInputType = {
   id?: true
   userId?: true
+  agenceId?: true
   name?: true
   email?: true
   adresse?: true
@@ -84,6 +89,7 @@ export type LocataireMaxAggregateInputType = {
 export type LocataireCountAggregateInputType = {
   id?: true
   userId?: true
+  agenceId?: true
   name?: true
   email?: true
   adresse?: true
@@ -168,6 +174,7 @@ export type LocataireGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type LocataireGroupByOutputType = {
   id: string
   userId: string
+  agenceId: string | null
   name: string
   email: string
   adresse: string
@@ -200,6 +207,7 @@ export type LocataireWhereInput = {
   NOT?: Prisma.LocataireWhereInput | Prisma.LocataireWhereInput[]
   id?: Prisma.StringFilter<"Locataire"> | string
   userId?: Prisma.StringFilter<"Locataire"> | string
+  agenceId?: Prisma.StringNullableFilter<"Locataire"> | string | null
   name?: Prisma.StringFilter<"Locataire"> | string
   email?: Prisma.StringFilter<"Locataire"> | string
   adresse?: Prisma.StringFilter<"Locataire"> | string
@@ -208,12 +216,13 @@ export type LocataireWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Locataire"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   quittances?: Prisma.QuittanceListRelationFilter
-  agences?: Prisma.AgenceListRelationFilter
+  agence?: Prisma.XOR<Prisma.AgenceNullableScalarRelationFilter, Prisma.AgenceWhereInput> | null
 }
 
 export type LocataireOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  agenceId?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   adresse?: Prisma.SortOrder
@@ -222,7 +231,7 @@ export type LocataireOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   quittances?: Prisma.QuittanceOrderByRelationAggregateInput
-  agences?: Prisma.AgenceOrderByRelationAggregateInput
+  agence?: Prisma.AgenceOrderByWithRelationInput
   _relevance?: Prisma.LocataireOrderByRelevanceInput
 }
 
@@ -233,6 +242,7 @@ export type LocataireWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.LocataireWhereInput | Prisma.LocataireWhereInput[]
   OR?: Prisma.LocataireWhereInput[]
   NOT?: Prisma.LocataireWhereInput | Prisma.LocataireWhereInput[]
+  agenceId?: Prisma.StringNullableFilter<"Locataire"> | string | null
   name?: Prisma.StringFilter<"Locataire"> | string
   adresse?: Prisma.StringFilter<"Locataire"> | string
   role?: Prisma.StringFilter<"Locataire"> | string
@@ -240,12 +250,13 @@ export type LocataireWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Locataire"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   quittances?: Prisma.QuittanceListRelationFilter
-  agences?: Prisma.AgenceListRelationFilter
+  agence?: Prisma.XOR<Prisma.AgenceNullableScalarRelationFilter, Prisma.AgenceWhereInput> | null
 }, "id" | "userId" | "email">
 
 export type LocataireOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  agenceId?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   adresse?: Prisma.SortOrder
@@ -263,6 +274,7 @@ export type LocataireScalarWhereWithAggregatesInput = {
   NOT?: Prisma.LocataireScalarWhereWithAggregatesInput | Prisma.LocataireScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Locataire"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Locataire"> | string
+  agenceId?: Prisma.StringNullableWithAggregatesFilter<"Locataire"> | string | null
   name?: Prisma.StringWithAggregatesFilter<"Locataire"> | string
   email?: Prisma.StringWithAggregatesFilter<"Locataire"> | string
   adresse?: Prisma.StringWithAggregatesFilter<"Locataire"> | string
@@ -281,12 +293,13 @@ export type LocataireCreateInput = {
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutLocataireInput
   quittances?: Prisma.QuittanceCreateNestedManyWithoutLocataireInput
-  agences?: Prisma.AgenceCreateNestedManyWithoutLocatairesInput
+  agence?: Prisma.AgenceCreateNestedOneWithoutLocatairesInput
 }
 
 export type LocataireUncheckedCreateInput = {
   id?: string
   userId: string
+  agenceId?: string | null
   name: string
   email: string
   adresse: string
@@ -294,7 +307,6 @@ export type LocataireUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   quittances?: Prisma.QuittanceUncheckedCreateNestedManyWithoutLocataireInput
-  agences?: Prisma.AgenceUncheckedCreateNestedManyWithoutLocatairesInput
 }
 
 export type LocataireUpdateInput = {
@@ -307,12 +319,13 @@ export type LocataireUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutLocataireNestedInput
   quittances?: Prisma.QuittanceUpdateManyWithoutLocataireNestedInput
-  agences?: Prisma.AgenceUpdateManyWithoutLocatairesNestedInput
+  agence?: Prisma.AgenceUpdateOneWithoutLocatairesNestedInput
 }
 
 export type LocataireUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  agenceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   adresse?: Prisma.StringFieldUpdateOperationsInput | string
@@ -320,12 +333,12 @@ export type LocataireUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   quittances?: Prisma.QuittanceUncheckedUpdateManyWithoutLocataireNestedInput
-  agences?: Prisma.AgenceUncheckedUpdateManyWithoutLocatairesNestedInput
 }
 
 export type LocataireCreateManyInput = {
   id?: string
   userId: string
+  agenceId?: string | null
   name: string
   email: string
   adresse: string
@@ -347,6 +360,7 @@ export type LocataireUpdateManyMutationInput = {
 export type LocataireUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  agenceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   adresse?: Prisma.StringFieldUpdateOperationsInput | string
@@ -374,6 +388,7 @@ export type LocataireOrderByRelevanceInput = {
 export type LocataireCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  agenceId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   adresse?: Prisma.SortOrder
@@ -385,6 +400,7 @@ export type LocataireCountOrderByAggregateInput = {
 export type LocataireMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  agenceId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   adresse?: Prisma.SortOrder
@@ -396,6 +412,7 @@ export type LocataireMaxOrderByAggregateInput = {
 export type LocataireMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  agenceId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   adresse?: Prisma.SortOrder
@@ -414,41 +431,45 @@ export type LocataireNullableScalarRelationFilter = {
   isNot?: Prisma.LocataireWhereInput | null
 }
 
-export type LocataireCreateNestedManyWithoutAgencesInput = {
-  create?: Prisma.XOR<Prisma.LocataireCreateWithoutAgencesInput, Prisma.LocataireUncheckedCreateWithoutAgencesInput> | Prisma.LocataireCreateWithoutAgencesInput[] | Prisma.LocataireUncheckedCreateWithoutAgencesInput[]
-  connectOrCreate?: Prisma.LocataireCreateOrConnectWithoutAgencesInput | Prisma.LocataireCreateOrConnectWithoutAgencesInput[]
+export type LocataireCreateNestedManyWithoutAgenceInput = {
+  create?: Prisma.XOR<Prisma.LocataireCreateWithoutAgenceInput, Prisma.LocataireUncheckedCreateWithoutAgenceInput> | Prisma.LocataireCreateWithoutAgenceInput[] | Prisma.LocataireUncheckedCreateWithoutAgenceInput[]
+  connectOrCreate?: Prisma.LocataireCreateOrConnectWithoutAgenceInput | Prisma.LocataireCreateOrConnectWithoutAgenceInput[]
+  createMany?: Prisma.LocataireCreateManyAgenceInputEnvelope
   connect?: Prisma.LocataireWhereUniqueInput | Prisma.LocataireWhereUniqueInput[]
 }
 
-export type LocataireUncheckedCreateNestedManyWithoutAgencesInput = {
-  create?: Prisma.XOR<Prisma.LocataireCreateWithoutAgencesInput, Prisma.LocataireUncheckedCreateWithoutAgencesInput> | Prisma.LocataireCreateWithoutAgencesInput[] | Prisma.LocataireUncheckedCreateWithoutAgencesInput[]
-  connectOrCreate?: Prisma.LocataireCreateOrConnectWithoutAgencesInput | Prisma.LocataireCreateOrConnectWithoutAgencesInput[]
+export type LocataireUncheckedCreateNestedManyWithoutAgenceInput = {
+  create?: Prisma.XOR<Prisma.LocataireCreateWithoutAgenceInput, Prisma.LocataireUncheckedCreateWithoutAgenceInput> | Prisma.LocataireCreateWithoutAgenceInput[] | Prisma.LocataireUncheckedCreateWithoutAgenceInput[]
+  connectOrCreate?: Prisma.LocataireCreateOrConnectWithoutAgenceInput | Prisma.LocataireCreateOrConnectWithoutAgenceInput[]
+  createMany?: Prisma.LocataireCreateManyAgenceInputEnvelope
   connect?: Prisma.LocataireWhereUniqueInput | Prisma.LocataireWhereUniqueInput[]
 }
 
-export type LocataireUpdateManyWithoutAgencesNestedInput = {
-  create?: Prisma.XOR<Prisma.LocataireCreateWithoutAgencesInput, Prisma.LocataireUncheckedCreateWithoutAgencesInput> | Prisma.LocataireCreateWithoutAgencesInput[] | Prisma.LocataireUncheckedCreateWithoutAgencesInput[]
-  connectOrCreate?: Prisma.LocataireCreateOrConnectWithoutAgencesInput | Prisma.LocataireCreateOrConnectWithoutAgencesInput[]
-  upsert?: Prisma.LocataireUpsertWithWhereUniqueWithoutAgencesInput | Prisma.LocataireUpsertWithWhereUniqueWithoutAgencesInput[]
+export type LocataireUpdateManyWithoutAgenceNestedInput = {
+  create?: Prisma.XOR<Prisma.LocataireCreateWithoutAgenceInput, Prisma.LocataireUncheckedCreateWithoutAgenceInput> | Prisma.LocataireCreateWithoutAgenceInput[] | Prisma.LocataireUncheckedCreateWithoutAgenceInput[]
+  connectOrCreate?: Prisma.LocataireCreateOrConnectWithoutAgenceInput | Prisma.LocataireCreateOrConnectWithoutAgenceInput[]
+  upsert?: Prisma.LocataireUpsertWithWhereUniqueWithoutAgenceInput | Prisma.LocataireUpsertWithWhereUniqueWithoutAgenceInput[]
+  createMany?: Prisma.LocataireCreateManyAgenceInputEnvelope
   set?: Prisma.LocataireWhereUniqueInput | Prisma.LocataireWhereUniqueInput[]
   disconnect?: Prisma.LocataireWhereUniqueInput | Prisma.LocataireWhereUniqueInput[]
   delete?: Prisma.LocataireWhereUniqueInput | Prisma.LocataireWhereUniqueInput[]
   connect?: Prisma.LocataireWhereUniqueInput | Prisma.LocataireWhereUniqueInput[]
-  update?: Prisma.LocataireUpdateWithWhereUniqueWithoutAgencesInput | Prisma.LocataireUpdateWithWhereUniqueWithoutAgencesInput[]
-  updateMany?: Prisma.LocataireUpdateManyWithWhereWithoutAgencesInput | Prisma.LocataireUpdateManyWithWhereWithoutAgencesInput[]
+  update?: Prisma.LocataireUpdateWithWhereUniqueWithoutAgenceInput | Prisma.LocataireUpdateWithWhereUniqueWithoutAgenceInput[]
+  updateMany?: Prisma.LocataireUpdateManyWithWhereWithoutAgenceInput | Prisma.LocataireUpdateManyWithWhereWithoutAgenceInput[]
   deleteMany?: Prisma.LocataireScalarWhereInput | Prisma.LocataireScalarWhereInput[]
 }
 
-export type LocataireUncheckedUpdateManyWithoutAgencesNestedInput = {
-  create?: Prisma.XOR<Prisma.LocataireCreateWithoutAgencesInput, Prisma.LocataireUncheckedCreateWithoutAgencesInput> | Prisma.LocataireCreateWithoutAgencesInput[] | Prisma.LocataireUncheckedCreateWithoutAgencesInput[]
-  connectOrCreate?: Prisma.LocataireCreateOrConnectWithoutAgencesInput | Prisma.LocataireCreateOrConnectWithoutAgencesInput[]
-  upsert?: Prisma.LocataireUpsertWithWhereUniqueWithoutAgencesInput | Prisma.LocataireUpsertWithWhereUniqueWithoutAgencesInput[]
+export type LocataireUncheckedUpdateManyWithoutAgenceNestedInput = {
+  create?: Prisma.XOR<Prisma.LocataireCreateWithoutAgenceInput, Prisma.LocataireUncheckedCreateWithoutAgenceInput> | Prisma.LocataireCreateWithoutAgenceInput[] | Prisma.LocataireUncheckedCreateWithoutAgenceInput[]
+  connectOrCreate?: Prisma.LocataireCreateOrConnectWithoutAgenceInput | Prisma.LocataireCreateOrConnectWithoutAgenceInput[]
+  upsert?: Prisma.LocataireUpsertWithWhereUniqueWithoutAgenceInput | Prisma.LocataireUpsertWithWhereUniqueWithoutAgenceInput[]
+  createMany?: Prisma.LocataireCreateManyAgenceInputEnvelope
   set?: Prisma.LocataireWhereUniqueInput | Prisma.LocataireWhereUniqueInput[]
   disconnect?: Prisma.LocataireWhereUniqueInput | Prisma.LocataireWhereUniqueInput[]
   delete?: Prisma.LocataireWhereUniqueInput | Prisma.LocataireWhereUniqueInput[]
   connect?: Prisma.LocataireWhereUniqueInput | Prisma.LocataireWhereUniqueInput[]
-  update?: Prisma.LocataireUpdateWithWhereUniqueWithoutAgencesInput | Prisma.LocataireUpdateWithWhereUniqueWithoutAgencesInput[]
-  updateMany?: Prisma.LocataireUpdateManyWithWhereWithoutAgencesInput | Prisma.LocataireUpdateManyWithWhereWithoutAgencesInput[]
+  update?: Prisma.LocataireUpdateWithWhereUniqueWithoutAgenceInput | Prisma.LocataireUpdateWithWhereUniqueWithoutAgenceInput[]
+  updateMany?: Prisma.LocataireUpdateManyWithWhereWithoutAgenceInput | Prisma.LocataireUpdateManyWithWhereWithoutAgenceInput[]
   deleteMany?: Prisma.LocataireScalarWhereInput | Prisma.LocataireScalarWhereInput[]
 }
 
@@ -498,7 +519,7 @@ export type LocataireUncheckedUpdateOneWithoutUserNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.LocataireUpdateToOneWithWhereWithoutUserInput, Prisma.LocataireUpdateWithoutUserInput>, Prisma.LocataireUncheckedUpdateWithoutUserInput>
 }
 
-export type LocataireCreateWithoutAgencesInput = {
+export type LocataireCreateWithoutAgenceInput = {
   id?: string
   name: string
   email: string
@@ -510,7 +531,7 @@ export type LocataireCreateWithoutAgencesInput = {
   quittances?: Prisma.QuittanceCreateNestedManyWithoutLocataireInput
 }
 
-export type LocataireUncheckedCreateWithoutAgencesInput = {
+export type LocataireUncheckedCreateWithoutAgenceInput = {
   id?: string
   userId: string
   name: string
@@ -522,25 +543,30 @@ export type LocataireUncheckedCreateWithoutAgencesInput = {
   quittances?: Prisma.QuittanceUncheckedCreateNestedManyWithoutLocataireInput
 }
 
-export type LocataireCreateOrConnectWithoutAgencesInput = {
+export type LocataireCreateOrConnectWithoutAgenceInput = {
   where: Prisma.LocataireWhereUniqueInput
-  create: Prisma.XOR<Prisma.LocataireCreateWithoutAgencesInput, Prisma.LocataireUncheckedCreateWithoutAgencesInput>
+  create: Prisma.XOR<Prisma.LocataireCreateWithoutAgenceInput, Prisma.LocataireUncheckedCreateWithoutAgenceInput>
 }
 
-export type LocataireUpsertWithWhereUniqueWithoutAgencesInput = {
-  where: Prisma.LocataireWhereUniqueInput
-  update: Prisma.XOR<Prisma.LocataireUpdateWithoutAgencesInput, Prisma.LocataireUncheckedUpdateWithoutAgencesInput>
-  create: Prisma.XOR<Prisma.LocataireCreateWithoutAgencesInput, Prisma.LocataireUncheckedCreateWithoutAgencesInput>
+export type LocataireCreateManyAgenceInputEnvelope = {
+  data: Prisma.LocataireCreateManyAgenceInput | Prisma.LocataireCreateManyAgenceInput[]
+  skipDuplicates?: boolean
 }
 
-export type LocataireUpdateWithWhereUniqueWithoutAgencesInput = {
+export type LocataireUpsertWithWhereUniqueWithoutAgenceInput = {
   where: Prisma.LocataireWhereUniqueInput
-  data: Prisma.XOR<Prisma.LocataireUpdateWithoutAgencesInput, Prisma.LocataireUncheckedUpdateWithoutAgencesInput>
+  update: Prisma.XOR<Prisma.LocataireUpdateWithoutAgenceInput, Prisma.LocataireUncheckedUpdateWithoutAgenceInput>
+  create: Prisma.XOR<Prisma.LocataireCreateWithoutAgenceInput, Prisma.LocataireUncheckedCreateWithoutAgenceInput>
 }
 
-export type LocataireUpdateManyWithWhereWithoutAgencesInput = {
+export type LocataireUpdateWithWhereUniqueWithoutAgenceInput = {
+  where: Prisma.LocataireWhereUniqueInput
+  data: Prisma.XOR<Prisma.LocataireUpdateWithoutAgenceInput, Prisma.LocataireUncheckedUpdateWithoutAgenceInput>
+}
+
+export type LocataireUpdateManyWithWhereWithoutAgenceInput = {
   where: Prisma.LocataireScalarWhereInput
-  data: Prisma.XOR<Prisma.LocataireUpdateManyMutationInput, Prisma.LocataireUncheckedUpdateManyWithoutAgencesInput>
+  data: Prisma.XOR<Prisma.LocataireUpdateManyMutationInput, Prisma.LocataireUncheckedUpdateManyWithoutAgenceInput>
 }
 
 export type LocataireScalarWhereInput = {
@@ -549,6 +575,7 @@ export type LocataireScalarWhereInput = {
   NOT?: Prisma.LocataireScalarWhereInput | Prisma.LocataireScalarWhereInput[]
   id?: Prisma.StringFilter<"Locataire"> | string
   userId?: Prisma.StringFilter<"Locataire"> | string
+  agenceId?: Prisma.StringNullableFilter<"Locataire"> | string | null
   name?: Prisma.StringFilter<"Locataire"> | string
   email?: Prisma.StringFilter<"Locataire"> | string
   adresse?: Prisma.StringFilter<"Locataire"> | string
@@ -566,19 +593,19 @@ export type LocataireCreateWithoutQuittancesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutLocataireInput
-  agences?: Prisma.AgenceCreateNestedManyWithoutLocatairesInput
+  agence?: Prisma.AgenceCreateNestedOneWithoutLocatairesInput
 }
 
 export type LocataireUncheckedCreateWithoutQuittancesInput = {
   id?: string
   userId: string
+  agenceId?: string | null
   name: string
   email: string
   adresse: string
   role?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  agences?: Prisma.AgenceUncheckedCreateNestedManyWithoutLocatairesInput
 }
 
 export type LocataireCreateOrConnectWithoutQuittancesInput = {
@@ -606,19 +633,19 @@ export type LocataireUpdateWithoutQuittancesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutLocataireNestedInput
-  agences?: Prisma.AgenceUpdateManyWithoutLocatairesNestedInput
+  agence?: Prisma.AgenceUpdateOneWithoutLocatairesNestedInput
 }
 
 export type LocataireUncheckedUpdateWithoutQuittancesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  agenceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   adresse?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  agences?: Prisma.AgenceUncheckedUpdateManyWithoutLocatairesNestedInput
 }
 
 export type LocataireCreateWithoutUserInput = {
@@ -630,11 +657,12 @@ export type LocataireCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   quittances?: Prisma.QuittanceCreateNestedManyWithoutLocataireInput
-  agences?: Prisma.AgenceCreateNestedManyWithoutLocatairesInput
+  agence?: Prisma.AgenceCreateNestedOneWithoutLocatairesInput
 }
 
 export type LocataireUncheckedCreateWithoutUserInput = {
   id?: string
+  agenceId?: string | null
   name: string
   email: string
   adresse: string
@@ -642,7 +670,6 @@ export type LocataireUncheckedCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   quittances?: Prisma.QuittanceUncheckedCreateNestedManyWithoutLocataireInput
-  agences?: Prisma.AgenceUncheckedCreateNestedManyWithoutLocatairesInput
 }
 
 export type LocataireCreateOrConnectWithoutUserInput = {
@@ -670,11 +697,12 @@ export type LocataireUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   quittances?: Prisma.QuittanceUpdateManyWithoutLocataireNestedInput
-  agences?: Prisma.AgenceUpdateManyWithoutLocatairesNestedInput
+  agence?: Prisma.AgenceUpdateOneWithoutLocatairesNestedInput
 }
 
 export type LocataireUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  agenceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   adresse?: Prisma.StringFieldUpdateOperationsInput | string
@@ -682,10 +710,20 @@ export type LocataireUncheckedUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   quittances?: Prisma.QuittanceUncheckedUpdateManyWithoutLocataireNestedInput
-  agences?: Prisma.AgenceUncheckedUpdateManyWithoutLocatairesNestedInput
 }
 
-export type LocataireUpdateWithoutAgencesInput = {
+export type LocataireCreateManyAgenceInput = {
+  id?: string
+  userId: string
+  name: string
+  email: string
+  adresse: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type LocataireUpdateWithoutAgenceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -697,7 +735,7 @@ export type LocataireUpdateWithoutAgencesInput = {
   quittances?: Prisma.QuittanceUpdateManyWithoutLocataireNestedInput
 }
 
-export type LocataireUncheckedUpdateWithoutAgencesInput = {
+export type LocataireUncheckedUpdateWithoutAgenceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -709,7 +747,7 @@ export type LocataireUncheckedUpdateWithoutAgencesInput = {
   quittances?: Prisma.QuittanceUncheckedUpdateManyWithoutLocataireNestedInput
 }
 
-export type LocataireUncheckedUpdateManyWithoutAgencesInput = {
+export type LocataireUncheckedUpdateManyWithoutAgenceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -727,12 +765,10 @@ export type LocataireUncheckedUpdateManyWithoutAgencesInput = {
 
 export type LocataireCountOutputType = {
   quittances: number
-  agences: number
 }
 
 export type LocataireCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   quittances?: boolean | LocataireCountOutputTypeCountQuittancesArgs
-  agences?: boolean | LocataireCountOutputTypeCountAgencesArgs
 }
 
 /**
@@ -752,17 +788,11 @@ export type LocataireCountOutputTypeCountQuittancesArgs<ExtArgs extends runtime.
   where?: Prisma.QuittanceWhereInput
 }
 
-/**
- * LocataireCountOutputType without action
- */
-export type LocataireCountOutputTypeCountAgencesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.AgenceWhereInput
-}
-
 
 export type LocataireSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  agenceId?: boolean
   name?: boolean
   email?: boolean
   adresse?: boolean
@@ -771,7 +801,7 @@ export type LocataireSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   quittances?: boolean | Prisma.Locataire$quittancesArgs<ExtArgs>
-  agences?: boolean | Prisma.Locataire$agencesArgs<ExtArgs>
+  agence?: boolean | Prisma.Locataire$agenceArgs<ExtArgs>
   _count?: boolean | Prisma.LocataireCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["locataire"]>
 
@@ -780,6 +810,7 @@ export type LocataireSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type LocataireSelectScalar = {
   id?: boolean
   userId?: boolean
+  agenceId?: boolean
   name?: boolean
   email?: boolean
   adresse?: boolean
@@ -788,11 +819,11 @@ export type LocataireSelectScalar = {
   updatedAt?: boolean
 }
 
-export type LocataireOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "name" | "email" | "adresse" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["locataire"]>
+export type LocataireOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "agenceId" | "name" | "email" | "adresse" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["locataire"]>
 export type LocataireInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   quittances?: boolean | Prisma.Locataire$quittancesArgs<ExtArgs>
-  agences?: boolean | Prisma.Locataire$agencesArgs<ExtArgs>
+  agence?: boolean | Prisma.Locataire$agenceArgs<ExtArgs>
   _count?: boolean | Prisma.LocataireCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -801,11 +832,12 @@ export type $LocatairePayload<ExtArgs extends runtime.Types.Extensions.InternalA
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
     quittances: Prisma.$QuittancePayload<ExtArgs>[]
-    agences: Prisma.$AgencePayload<ExtArgs>[]
+    agence: Prisma.$AgencePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
+    agenceId: string | null
     name: string
     email: string
     adresse: string
@@ -1154,7 +1186,7 @@ export interface Prisma__LocataireClient<T, Null = never, ExtArgs extends runtim
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   quittances<T extends Prisma.Locataire$quittancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Locataire$quittancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuittancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  agences<T extends Prisma.Locataire$agencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Locataire$agencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AgencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  agence<T extends Prisma.Locataire$agenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Locataire$agenceArgs<ExtArgs>>): Prisma.Prisma__AgenceClient<runtime.Types.Result.GetResult<Prisma.$AgencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1186,6 +1218,7 @@ export interface Prisma__LocataireClient<T, Null = never, ExtArgs extends runtim
 export interface LocataireFieldRefs {
   readonly id: Prisma.FieldRef<"Locataire", 'String'>
   readonly userId: Prisma.FieldRef<"Locataire", 'String'>
+  readonly agenceId: Prisma.FieldRef<"Locataire", 'String'>
   readonly name: Prisma.FieldRef<"Locataire", 'String'>
   readonly email: Prisma.FieldRef<"Locataire", 'String'>
   readonly adresse: Prisma.FieldRef<"Locataire", 'String'>
@@ -1559,9 +1592,9 @@ export type Locataire$quittancesArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
- * Locataire.agences
+ * Locataire.agence
  */
-export type Locataire$agencesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Locataire$agenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Agence
    */
@@ -1575,11 +1608,6 @@ export type Locataire$agencesArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   include?: Prisma.AgenceInclude<ExtArgs> | null
   where?: Prisma.AgenceWhereInput
-  orderBy?: Prisma.AgenceOrderByWithRelationInput | Prisma.AgenceOrderByWithRelationInput[]
-  cursor?: Prisma.AgenceWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.AgenceScalarFieldEnum | Prisma.AgenceScalarFieldEnum[]
 }
 
 /**

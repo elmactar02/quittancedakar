@@ -33,6 +33,7 @@ CREATE TABLE `agency_employees` (
 CREATE TABLE `locataires` (
     `id` VARCHAR(191) NOT NULL,
     `user_id` VARCHAR(191) NOT NULL,
+    `agence_id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(100) NOT NULL,
     `email` VARCHAR(100) NOT NULL,
     `adresse` VARCHAR(200) NOT NULL,
@@ -78,15 +79,6 @@ CREATE TABLE `users` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- CreateTable
-CREATE TABLE `_AgenceLocataire` (
-    `A` VARCHAR(191) NOT NULL,
-    `B` VARCHAR(191) NOT NULL,
-
-    UNIQUE INDEX `_AgenceLocataire_AB_unique`(`A`, `B`),
-    INDEX `_AgenceLocataire_B_index`(`B`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
 -- AddForeignKey
 ALTER TABLE `agency_employees` ADD CONSTRAINT `agency_employees_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -97,13 +89,10 @@ ALTER TABLE `agency_employees` ADD CONSTRAINT `agency_employees_agency_id_fkey` 
 ALTER TABLE `locataires` ADD CONSTRAINT `locataires_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE `locataires` ADD CONSTRAINT `locataires_agence_id_fkey` FOREIGN KEY (`agence_id`) REFERENCES `agences`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE `quittances` ADD CONSTRAINT `quittances_tenant_id_fkey` FOREIGN KEY (`tenant_id`) REFERENCES `locataires`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `quittances` ADD CONSTRAINT `quittances_agency_id_fkey` FOREIGN KEY (`agency_id`) REFERENCES `agences`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `_AgenceLocataire` ADD CONSTRAINT `_AgenceLocataire_A_fkey` FOREIGN KEY (`A`) REFERENCES `agences`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `_AgenceLocataire` ADD CONSTRAINT `_AgenceLocataire_B_fkey` FOREIGN KEY (`B`) REFERENCES `locataires`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;

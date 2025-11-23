@@ -1,10 +1,12 @@
-import { Router } from "express";
-import * as locataireControler from "./LocataireController"
+import { Router } from "express"
+import { locataireController } from "./LocataireController";
 
-// Initialisation du routeur
-const LocataireRouter = Router();
+const locataireRouter = Router();
 
-//Définition des routers
-LocataireRouter.get("/locataire", ()=>{});
-LocataireRouter.get("/locataire/quittances/:id",locataireControler.getQuittances)
-export default LocataireRouter; 
+locataireRouter.get("/", locataireController.getAllLocataires);
+locataireRouter.get("/:id", locataireController.getLocataireById);
+locataireRouter.post("/", locataireController.createLocataire);
+locataireRouter.patch("/:id", locataireController.updateLocataire);
+
+// On exporte le routeur configuré directement
+export { locataireRouter as LocatairesRoutes };

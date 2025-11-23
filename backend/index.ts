@@ -1,8 +1,6 @@
-import express from "express";
+import express, { Router } from "express";
 import cors from "cors";
-import AgenceRouter from "./feature/agence/AgenceRoute";
-import LocataireRouter from "./feature/locataire/LocataireRoute";
-import QuittanceRouter from "./feature/quittance/QuittanceRoute";
+import { registerRoutes } from "./routes/registerRoutes";
 // Création de l'application Express
 const app = express();
 
@@ -13,13 +11,17 @@ app.use(cors());
 // Middleware pour parser automatiquement le JSON dans les requêtes entrantes
 app.use(express.json());
 
-//Toutes les routes sont accessibles depuis la racine "/api"
-app.use("/", AgenceRouter,LocataireRouter,QuittanceRouter);
+// Création d'un routeur principal pour l'API
+const apiRouter = Router();
+
+// Enregistrement de toutes les routes de l'application sur le routeur principal
+registerRoutes(apiRouter);
+app.use(apiRouter);
 
 // Lancement du serveur sur un port
 const PORT = process.env.PORT || 2000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 
 export default app;

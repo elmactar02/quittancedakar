@@ -268,7 +268,7 @@ export type AgenceCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   quittances?: Prisma.QuittanceCreateNestedManyWithoutAgenceInput
-  locataires?: Prisma.LocataireCreateNestedManyWithoutAgencesInput
+  locataires?: Prisma.LocataireCreateNestedManyWithoutAgenceInput
   agencyEmployees?: Prisma.AgencyEmployeeCreateNestedManyWithoutAgencyInput
 }
 
@@ -281,7 +281,7 @@ export type AgenceUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   quittances?: Prisma.QuittanceUncheckedCreateNestedManyWithoutAgenceInput
-  locataires?: Prisma.LocataireUncheckedCreateNestedManyWithoutAgencesInput
+  locataires?: Prisma.LocataireUncheckedCreateNestedManyWithoutAgenceInput
   agencyEmployees?: Prisma.AgencyEmployeeUncheckedCreateNestedManyWithoutAgencyInput
 }
 
@@ -294,7 +294,7 @@ export type AgenceUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   quittances?: Prisma.QuittanceUpdateManyWithoutAgenceNestedInput
-  locataires?: Prisma.LocataireUpdateManyWithoutAgencesNestedInput
+  locataires?: Prisma.LocataireUpdateManyWithoutAgenceNestedInput
   agencyEmployees?: Prisma.AgencyEmployeeUpdateManyWithoutAgencyNestedInput
 }
 
@@ -307,7 +307,7 @@ export type AgenceUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   quittances?: Prisma.QuittanceUncheckedUpdateManyWithoutAgenceNestedInput
-  locataires?: Prisma.LocataireUncheckedUpdateManyWithoutAgencesNestedInput
+  locataires?: Prisma.LocataireUncheckedUpdateManyWithoutAgenceNestedInput
   agencyEmployees?: Prisma.AgencyEmployeeUncheckedUpdateManyWithoutAgencyNestedInput
 }
 
@@ -382,14 +382,9 @@ export type AgenceScalarRelationFilter = {
   isNot?: Prisma.AgenceWhereInput
 }
 
-export type AgenceListRelationFilter = {
-  every?: Prisma.AgenceWhereInput
-  some?: Prisma.AgenceWhereInput
-  none?: Prisma.AgenceWhereInput
-}
-
-export type AgenceOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type AgenceNullableScalarRelationFilter = {
+  is?: Prisma.AgenceWhereInput | null
+  isNot?: Prisma.AgenceWhereInput | null
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -414,42 +409,20 @@ export type AgenceUpdateOneRequiredWithoutAgencyEmployeesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.AgenceUpdateToOneWithWhereWithoutAgencyEmployeesInput, Prisma.AgenceUpdateWithoutAgencyEmployeesInput>, Prisma.AgenceUncheckedUpdateWithoutAgencyEmployeesInput>
 }
 
-export type AgenceCreateNestedManyWithoutLocatairesInput = {
-  create?: Prisma.XOR<Prisma.AgenceCreateWithoutLocatairesInput, Prisma.AgenceUncheckedCreateWithoutLocatairesInput> | Prisma.AgenceCreateWithoutLocatairesInput[] | Prisma.AgenceUncheckedCreateWithoutLocatairesInput[]
-  connectOrCreate?: Prisma.AgenceCreateOrConnectWithoutLocatairesInput | Prisma.AgenceCreateOrConnectWithoutLocatairesInput[]
-  connect?: Prisma.AgenceWhereUniqueInput | Prisma.AgenceWhereUniqueInput[]
+export type AgenceCreateNestedOneWithoutLocatairesInput = {
+  create?: Prisma.XOR<Prisma.AgenceCreateWithoutLocatairesInput, Prisma.AgenceUncheckedCreateWithoutLocatairesInput>
+  connectOrCreate?: Prisma.AgenceCreateOrConnectWithoutLocatairesInput
+  connect?: Prisma.AgenceWhereUniqueInput
 }
 
-export type AgenceUncheckedCreateNestedManyWithoutLocatairesInput = {
-  create?: Prisma.XOR<Prisma.AgenceCreateWithoutLocatairesInput, Prisma.AgenceUncheckedCreateWithoutLocatairesInput> | Prisma.AgenceCreateWithoutLocatairesInput[] | Prisma.AgenceUncheckedCreateWithoutLocatairesInput[]
-  connectOrCreate?: Prisma.AgenceCreateOrConnectWithoutLocatairesInput | Prisma.AgenceCreateOrConnectWithoutLocatairesInput[]
-  connect?: Prisma.AgenceWhereUniqueInput | Prisma.AgenceWhereUniqueInput[]
-}
-
-export type AgenceUpdateManyWithoutLocatairesNestedInput = {
-  create?: Prisma.XOR<Prisma.AgenceCreateWithoutLocatairesInput, Prisma.AgenceUncheckedCreateWithoutLocatairesInput> | Prisma.AgenceCreateWithoutLocatairesInput[] | Prisma.AgenceUncheckedCreateWithoutLocatairesInput[]
-  connectOrCreate?: Prisma.AgenceCreateOrConnectWithoutLocatairesInput | Prisma.AgenceCreateOrConnectWithoutLocatairesInput[]
-  upsert?: Prisma.AgenceUpsertWithWhereUniqueWithoutLocatairesInput | Prisma.AgenceUpsertWithWhereUniqueWithoutLocatairesInput[]
-  set?: Prisma.AgenceWhereUniqueInput | Prisma.AgenceWhereUniqueInput[]
-  disconnect?: Prisma.AgenceWhereUniqueInput | Prisma.AgenceWhereUniqueInput[]
-  delete?: Prisma.AgenceWhereUniqueInput | Prisma.AgenceWhereUniqueInput[]
-  connect?: Prisma.AgenceWhereUniqueInput | Prisma.AgenceWhereUniqueInput[]
-  update?: Prisma.AgenceUpdateWithWhereUniqueWithoutLocatairesInput | Prisma.AgenceUpdateWithWhereUniqueWithoutLocatairesInput[]
-  updateMany?: Prisma.AgenceUpdateManyWithWhereWithoutLocatairesInput | Prisma.AgenceUpdateManyWithWhereWithoutLocatairesInput[]
-  deleteMany?: Prisma.AgenceScalarWhereInput | Prisma.AgenceScalarWhereInput[]
-}
-
-export type AgenceUncheckedUpdateManyWithoutLocatairesNestedInput = {
-  create?: Prisma.XOR<Prisma.AgenceCreateWithoutLocatairesInput, Prisma.AgenceUncheckedCreateWithoutLocatairesInput> | Prisma.AgenceCreateWithoutLocatairesInput[] | Prisma.AgenceUncheckedCreateWithoutLocatairesInput[]
-  connectOrCreate?: Prisma.AgenceCreateOrConnectWithoutLocatairesInput | Prisma.AgenceCreateOrConnectWithoutLocatairesInput[]
-  upsert?: Prisma.AgenceUpsertWithWhereUniqueWithoutLocatairesInput | Prisma.AgenceUpsertWithWhereUniqueWithoutLocatairesInput[]
-  set?: Prisma.AgenceWhereUniqueInput | Prisma.AgenceWhereUniqueInput[]
-  disconnect?: Prisma.AgenceWhereUniqueInput | Prisma.AgenceWhereUniqueInput[]
-  delete?: Prisma.AgenceWhereUniqueInput | Prisma.AgenceWhereUniqueInput[]
-  connect?: Prisma.AgenceWhereUniqueInput | Prisma.AgenceWhereUniqueInput[]
-  update?: Prisma.AgenceUpdateWithWhereUniqueWithoutLocatairesInput | Prisma.AgenceUpdateWithWhereUniqueWithoutLocatairesInput[]
-  updateMany?: Prisma.AgenceUpdateManyWithWhereWithoutLocatairesInput | Prisma.AgenceUpdateManyWithWhereWithoutLocatairesInput[]
-  deleteMany?: Prisma.AgenceScalarWhereInput | Prisma.AgenceScalarWhereInput[]
+export type AgenceUpdateOneWithoutLocatairesNestedInput = {
+  create?: Prisma.XOR<Prisma.AgenceCreateWithoutLocatairesInput, Prisma.AgenceUncheckedCreateWithoutLocatairesInput>
+  connectOrCreate?: Prisma.AgenceCreateOrConnectWithoutLocatairesInput
+  upsert?: Prisma.AgenceUpsertWithoutLocatairesInput
+  disconnect?: Prisma.AgenceWhereInput | boolean
+  delete?: Prisma.AgenceWhereInput | boolean
+  connect?: Prisma.AgenceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AgenceUpdateToOneWithWhereWithoutLocatairesInput, Prisma.AgenceUpdateWithoutLocatairesInput>, Prisma.AgenceUncheckedUpdateWithoutLocatairesInput>
 }
 
 export type AgenceCreateNestedOneWithoutQuittancesInput = {
@@ -475,7 +448,7 @@ export type AgenceCreateWithoutAgencyEmployeesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   quittances?: Prisma.QuittanceCreateNestedManyWithoutAgenceInput
-  locataires?: Prisma.LocataireCreateNestedManyWithoutAgencesInput
+  locataires?: Prisma.LocataireCreateNestedManyWithoutAgenceInput
 }
 
 export type AgenceUncheckedCreateWithoutAgencyEmployeesInput = {
@@ -487,7 +460,7 @@ export type AgenceUncheckedCreateWithoutAgencyEmployeesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   quittances?: Prisma.QuittanceUncheckedCreateNestedManyWithoutAgenceInput
-  locataires?: Prisma.LocataireUncheckedCreateNestedManyWithoutAgencesInput
+  locataires?: Prisma.LocataireUncheckedCreateNestedManyWithoutAgenceInput
 }
 
 export type AgenceCreateOrConnectWithoutAgencyEmployeesInput = {
@@ -515,7 +488,7 @@ export type AgenceUpdateWithoutAgencyEmployeesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   quittances?: Prisma.QuittanceUpdateManyWithoutAgenceNestedInput
-  locataires?: Prisma.LocataireUpdateManyWithoutAgencesNestedInput
+  locataires?: Prisma.LocataireUpdateManyWithoutAgenceNestedInput
 }
 
 export type AgenceUncheckedUpdateWithoutAgencyEmployeesInput = {
@@ -527,7 +500,7 @@ export type AgenceUncheckedUpdateWithoutAgencyEmployeesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   quittances?: Prisma.QuittanceUncheckedUpdateManyWithoutAgenceNestedInput
-  locataires?: Prisma.LocataireUncheckedUpdateManyWithoutAgencesNestedInput
+  locataires?: Prisma.LocataireUncheckedUpdateManyWithoutAgenceNestedInput
 }
 
 export type AgenceCreateWithoutLocatairesInput = {
@@ -559,33 +532,39 @@ export type AgenceCreateOrConnectWithoutLocatairesInput = {
   create: Prisma.XOR<Prisma.AgenceCreateWithoutLocatairesInput, Prisma.AgenceUncheckedCreateWithoutLocatairesInput>
 }
 
-export type AgenceUpsertWithWhereUniqueWithoutLocatairesInput = {
-  where: Prisma.AgenceWhereUniqueInput
+export type AgenceUpsertWithoutLocatairesInput = {
   update: Prisma.XOR<Prisma.AgenceUpdateWithoutLocatairesInput, Prisma.AgenceUncheckedUpdateWithoutLocatairesInput>
   create: Prisma.XOR<Prisma.AgenceCreateWithoutLocatairesInput, Prisma.AgenceUncheckedCreateWithoutLocatairesInput>
+  where?: Prisma.AgenceWhereInput
 }
 
-export type AgenceUpdateWithWhereUniqueWithoutLocatairesInput = {
-  where: Prisma.AgenceWhereUniqueInput
+export type AgenceUpdateToOneWithWhereWithoutLocatairesInput = {
+  where?: Prisma.AgenceWhereInput
   data: Prisma.XOR<Prisma.AgenceUpdateWithoutLocatairesInput, Prisma.AgenceUncheckedUpdateWithoutLocatairesInput>
 }
 
-export type AgenceUpdateManyWithWhereWithoutLocatairesInput = {
-  where: Prisma.AgenceScalarWhereInput
-  data: Prisma.XOR<Prisma.AgenceUpdateManyMutationInput, Prisma.AgenceUncheckedUpdateManyWithoutLocatairesInput>
+export type AgenceUpdateWithoutLocatairesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  adresse?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  quittances?: Prisma.QuittanceUpdateManyWithoutAgenceNestedInput
+  agencyEmployees?: Prisma.AgencyEmployeeUpdateManyWithoutAgencyNestedInput
 }
 
-export type AgenceScalarWhereInput = {
-  AND?: Prisma.AgenceScalarWhereInput | Prisma.AgenceScalarWhereInput[]
-  OR?: Prisma.AgenceScalarWhereInput[]
-  NOT?: Prisma.AgenceScalarWhereInput | Prisma.AgenceScalarWhereInput[]
-  id?: Prisma.StringFilter<"Agence"> | string
-  name?: Prisma.StringFilter<"Agence"> | string
-  email?: Prisma.StringFilter<"Agence"> | string
-  adresse?: Prisma.StringFilter<"Agence"> | string
-  role?: Prisma.StringFilter<"Agence"> | string
-  createdAt?: Prisma.DateTimeFilter<"Agence"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Agence"> | Date | string
+export type AgenceUncheckedUpdateWithoutLocatairesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  adresse?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  quittances?: Prisma.QuittanceUncheckedUpdateManyWithoutAgenceNestedInput
+  agencyEmployees?: Prisma.AgencyEmployeeUncheckedUpdateManyWithoutAgencyNestedInput
 }
 
 export type AgenceCreateWithoutQuittancesInput = {
@@ -596,7 +575,7 @@ export type AgenceCreateWithoutQuittancesInput = {
   role?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  locataires?: Prisma.LocataireCreateNestedManyWithoutAgencesInput
+  locataires?: Prisma.LocataireCreateNestedManyWithoutAgenceInput
   agencyEmployees?: Prisma.AgencyEmployeeCreateNestedManyWithoutAgencyInput
 }
 
@@ -608,7 +587,7 @@ export type AgenceUncheckedCreateWithoutQuittancesInput = {
   role?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  locataires?: Prisma.LocataireUncheckedCreateNestedManyWithoutAgencesInput
+  locataires?: Prisma.LocataireUncheckedCreateNestedManyWithoutAgenceInput
   agencyEmployees?: Prisma.AgencyEmployeeUncheckedCreateNestedManyWithoutAgencyInput
 }
 
@@ -636,7 +615,7 @@ export type AgenceUpdateWithoutQuittancesInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  locataires?: Prisma.LocataireUpdateManyWithoutAgencesNestedInput
+  locataires?: Prisma.LocataireUpdateManyWithoutAgenceNestedInput
   agencyEmployees?: Prisma.AgencyEmployeeUpdateManyWithoutAgencyNestedInput
 }
 
@@ -648,42 +627,8 @@ export type AgenceUncheckedUpdateWithoutQuittancesInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  locataires?: Prisma.LocataireUncheckedUpdateManyWithoutAgencesNestedInput
+  locataires?: Prisma.LocataireUncheckedUpdateManyWithoutAgenceNestedInput
   agencyEmployees?: Prisma.AgencyEmployeeUncheckedUpdateManyWithoutAgencyNestedInput
-}
-
-export type AgenceUpdateWithoutLocatairesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  adresse?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  quittances?: Prisma.QuittanceUpdateManyWithoutAgenceNestedInput
-  agencyEmployees?: Prisma.AgencyEmployeeUpdateManyWithoutAgencyNestedInput
-}
-
-export type AgenceUncheckedUpdateWithoutLocatairesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  adresse?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  quittances?: Prisma.QuittanceUncheckedUpdateManyWithoutAgenceNestedInput
-  agencyEmployees?: Prisma.AgencyEmployeeUncheckedUpdateManyWithoutAgencyNestedInput
-}
-
-export type AgenceUncheckedUpdateManyWithoutLocatairesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  adresse?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 

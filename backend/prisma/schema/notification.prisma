@@ -1,0 +1,17 @@
+model notification {
+    id String @id @default(uuid())
+    label String @db.VarChar(100)
+    content String @db.VarChar(200)
+
+    // Foreign Keys
+    targetId String @map("target_id")
+
+    // Internal Relations
+    target User @relation("UserNotification", fields: [targetId], references: [id])
+
+    seenAt DateTime? @map("seen_at")
+    sentAt DateTime @default(now()) @map("sent_at")
+
+    @@map("notifications")
+}
+

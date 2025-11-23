@@ -815,6 +815,7 @@ export type AgencyEmployeeScalarFieldEnum = (typeof AgencyEmployeeScalarFieldEnu
 export const LocataireScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  agenceId: 'agenceId',
   name: 'name',
   email: 'email',
   adresse: 'adresse',
@@ -899,6 +900,7 @@ export type AgencyEmployeeOrderByRelevanceFieldEnum = (typeof AgencyEmployeeOrde
 export const LocataireOrderByRelevanceFieldEnum = {
   id: 'id',
   userId: 'userId',
+  agenceId: 'agenceId',
   name: 'name',
   email: 'email',
   adresse: 'adresse',
